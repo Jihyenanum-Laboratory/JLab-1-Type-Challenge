@@ -60,6 +60,11 @@ type MyPick<T, K extends keyof T> = {
 
 ### 풀이 과정
 
+1. `TodoPreview`와 `MyPick`이 동일해야 한다.
+2.
+
+## 새롭게 알게 된 내용
+
 1. Pick<T,K>
 
    > T타입을부터 K프로퍼티만 추출한다.
