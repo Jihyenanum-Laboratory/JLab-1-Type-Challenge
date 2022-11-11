@@ -60,22 +60,18 @@ type MyPick<T, K extends keyof T> = {
 
 ### 풀이 과정
 
-1. `TodoPreview`와 `MyPick`이 동일해야 한다.
-2.
+> 제네릭 타입으로 온 `T`에 대한 모든 키값을 선택적으로 만든다.
 
 ## 새롭게 알게 된 내용
 
-1. Pick<T,K>
+1. 유니온(Union) 타입
 
-   > T타입을부터 K프로퍼티만 추출한다.
-   > 키값 T에 속하는 union 타입 K를 받아(= K extends keyof T) 매칭되는 프로퍼티만 리턴한다.( = [P in K: T [P])
-   > keyof 키워드
-   >
-   > > keyof 키워드는 타입 값에 존재하는 모든 프로퍼티의 키값을 union 형태로 리턴 받는다.
+   > 하나의 프로퍼티에 다양한 변수가 올 수 있는 타입
 
-2. keyof
+2. Partial<T>
+   > 타입 T의 모든 프로퍼티를 Optional 형태로 바꾸어준다.
+   > 오른쪽에서 P in keyof T는 타입 T의 프로퍼티 키값에 해당하는 P를 전부 옵셔널(물음표 키워드) 형태로 감싸 리턴한다.
 
-   > 어떤 타입(이하 타입스크립트의 interface와 혼용할 수 있습니다.) 의 키 부분들만을 모아 놓은 것을 뜻한다.
-
-3. MappedType
-   > 기존에 정의되어 있는 타입을 새로운 타입으로 변환해 주는 문법
+```ts
+type Partial<T> = { [P in keyof T]?: T[P] };
+```
